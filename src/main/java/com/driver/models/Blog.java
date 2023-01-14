@@ -1,107 +1,84 @@
 package com.driver.models;
 
-
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+@Entity
+public class Blog {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private int id;
 
-@Entity 
-@Table(name="blog")
-public class Blog{
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	
-	
-	private String title;
-	
-	private String content;
-	
-	private Date pubDate;
-	
-	@OneToMany(mappedBy="blog", cascade= CascadeType.ALL )
-	private List<Image> imageList;
-	
-	
-	@ManyToOne
-	@JoinColumn
-	private User user;
+        private String title;
 
-	public int getId() {
-		return id;
-	}
+        private String content;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+        private Date pubdate;
 
-	public String getTitle() {
-		return title;
-	}
+        public int getId() {
+                return id;
+        }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+        public void setId(int id) {
+                this.id = id;
+        }
 
-	public String getContent() {
-		return content;
-	}
+        public String getTitle() {
+                return title;
+        }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+        public void setTitle(String title) {
+                this.title = title;
+        }
 
-	public Date getPubDate() {
-		return pubDate;
-	}
+        public String getContent() {
+                return content;
+        }
 
-	public void setPubDate(Date pubDate) {
-		this.pubDate = pubDate;
-		
-		
-	}
+        public void setContent(String content) {
+                this.content = content;
+        }
 
-	public Blog() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+        public Date getPubDate() {
+                return pubdate;
+        }
 
-	public List<Image> getImageList() {
-		return imageList;
-	}
+        public List<Image> getImageList() {
+                return imageList;
+        }
 
-	public void setImageList(List<Image> imageList) {
-		this.imageList = imageList;
-	}
+        public void setImageList(List<Image> imageList) {
+                this.imageList = imageList;
+        }
 
-	public User getUser() {
-		return user;
-	}
+        public void setPubDate(Date pubdate
+        ) {
+                this.pubdate = pubdate;
+        }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+        public Blog() {
+        }
 
-	public Blog(int id, String title, String content, Date pubDate, List<Image> imageList, User user) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.content = content;
-		this.pubDate = pubDate;
-		this.imageList = imageList;
-		this.user = user;
-	}
-	
-	
-	
+        public Blog( String title, String content, Date pubdate) {
+                this.title = title;
+                this.content = content;
+                this.pubdate = pubdate;
+        }
+
+        public User getUser() {
+                return user;
+        }
+
+        public void setUser(User user) {
+                this.user = user;
+        }
+
+        @ManyToOne
+        @JoinColumn
+        private User user;
+
+        @OneToMany(mappedBy = "blog",cascade = CascadeType.ALL)
+        private List<Image> imageList;
 }
 
