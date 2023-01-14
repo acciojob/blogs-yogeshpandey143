@@ -21,7 +21,7 @@ public class ImageService {
         //create an image based on given parameters and add it to the imageList of given blog
         Image image = new Image();
         image.setDescription(description);
-        image.setDimension(dimensions);
+        image.setDimensions(dimensions);
         image.setBlog(blog);
 
         List<Image> currimageList = blog.getImageList();

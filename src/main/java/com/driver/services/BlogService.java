@@ -69,7 +69,7 @@ public class BlogService {
     public void addImage(Integer blogId, String description, String dimensions){
         Image image = new Image();
         image.setDescription(description);
-        image.setDimension(dimensions);
+        image.setDimensions(dimensions);
         Blog blog = findBlogById(blogId);
         image.setBlog(blog);
 

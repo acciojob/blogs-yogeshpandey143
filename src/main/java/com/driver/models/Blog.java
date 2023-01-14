@@ -26,7 +26,7 @@ public class Blog{
 	
 	private String content;
 	
-	private Date pushDate;
+	private Date pubDate;
 	
 	@OneToMany(mappedBy="blog", cascade= CascadeType.ALL )
 	private List<Image> imageList;
@@ -60,12 +60,12 @@ public class Blog{
 		this.content = content;
 	}
 
-	public Date getPushDate() {
-		return pushDate;
+	public Date getPubDate() {
+		return pubDate;
 	}
 
-	public void setPushDate(Date pushDate) {
-		this.pushDate = pushDate;
+	public void setPubDate(Date pubDate) {
+		this.pubDate = pubDate;
 		
 		
 	}
@@ -91,12 +91,12 @@ public class Blog{
 		this.user = user;
 	}
 
-	public Blog(int id, String title, String content, Date pushDate, List<Image> imageList, User user) {
+	public Blog(int id, String title, String content, Date pubDate, List<Image> imageList, User user) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.content = content;
-		this.pushDate = pushDate;
+		this.pubDate = pubDate;
 		this.imageList = imageList;
 		this.user = user;
 	}
