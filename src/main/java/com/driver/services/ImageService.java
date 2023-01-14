@@ -4,12 +4,14 @@ import com.driver.models.*;
 import com.driver.repositories.BlogRepository;
 import com.driver.repositories.ImageRepository;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 @Service
 public class ImageService {
     @Autowired
@@ -44,8 +46,14 @@ public class ImageService {
     public int countImagesInScreen(Image image, String screenDimensions) {
         //Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
         //In case the image is null, return 0
-        if(image == null) return 0;
-        return 1;
+        if (screenDimensions.split("X").length == 2 ||Objects.nonNull(image)) {
+            Integer maxLength =
+                    Integer.parseInt(screenDimensions.split("X")[0]) / Integer.parseInt(image.getDimensions().split("X")[0]) ;
+            Integer maxBreadth =
+                    Integer.parseInt(screenDimensions.split("X")[1]) / Integer.parseInt(image.getDimensions().split("X")[1]);
+            return maxLength * maxBreadth;
+        }
+        return 0;
 
     }
 }
