@@ -29,7 +29,10 @@ public class Image{
 	public int getId() {
 		return id;
 	}
-
+    public Image(String description, String dimensions) {
+        this.description = description;
+        this.dimensions = dimensions;
+    }
 
 	public void setId(int id) {
 		this.id = id;
